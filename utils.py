@@ -7,14 +7,11 @@ from datasets import load_dataset
 import ast
 
 def extract_answer(text: str):
-    """从模型生成的回答中提取答案"""
     if not isinstance(text, str):
         return None
-    # 1. \boxed{...}
     boxed = re.findall(r'\\boxed\{([^}]*)\}', text)
     if boxed:
         return boxed[-1].strip()
-    # 2. 最后一个数字（含分数）
     numbers = re.findall(r'-?\d+\.?\d*(?:/\d+)?', text)
     if numbers:
         return numbers[-1].strip()
@@ -25,9 +22,7 @@ def load_dataset_config(config_path: str = "configs/datasets.yaml"):
         return yaml.safe_load(f)["datasets"]
 
 def load_benchmark(name: str, config: dict):
-    """加载 benchmark，返回统一格式: List[{'problem': ..., 'label': ...}]"""
     if config["type"] == "hf":
-        # 检查是否有 config
         hf_config = config.get("config")
         if hf_config:
             ds = load_dataset(config["path"], hf_config, split=config["split"])
@@ -37,7 +32,6 @@ def load_benchmark(name: str, config: dict):
         file_path = Path(config["path"])
         file_extension = file_path.suffix.lower()
         split_name = "train"
-        # 根据文件扩展名选择加载器
         if file_extension in [".jsonl", ".json"]:
             loader = "json"
         elif file_extension == ".parquet":
@@ -59,7 +53,6 @@ def load_benchmark(name: str, config: dict):
     label_key = config["label_key"]
     label_proc_str = config.get("label_processor", "str")
 
-    # 安全地解析 lambda
     try:
         label_processor = eval(label_proc_str)
     except:

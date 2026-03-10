@@ -25,7 +25,7 @@ def apply_chat_template(tokenizer, messages, enable_thinking=False):
         enable_thinking=enable_thinking
     )
 
-def create_openai_client(api_key, base_url="http://172.96.160.199:3000/v1"):
+def create_openai_client(api_key, base_url=""):
     return OpenAI(
         base_url=base_url,
         api_key=api_key
@@ -80,7 +80,7 @@ def process_evaluation_item(client, item, judge_template, max_tokens=100000, tem
     
     return out_item, is_correct
 
-def evaluate_with_api(generated_data, judge_template, api_key, base_url="http://172.96.160.199:3000/v1", concurrent_threads=100, max_tokens=100000, temperature=0.0, delay=0.05):
+def evaluate_with_api(generated_data, judge_template, api_key, base_url="", concurrent_threads=100, max_tokens=100000, temperature=0.0, delay=0.05):
     """Evaluate using GPT-5-Mini API with concurrency"""
     print(f"\n⚖️ Evaluating answers with GPT-5-Mini API...")
     print(f"🚀 Using {concurrent_threads} concurrent threads for API calls...")
