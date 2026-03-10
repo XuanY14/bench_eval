@@ -1,0 +1,5 @@
+Solve the problem below step by step, showing clear reasoning at each stage. Do not skip any logical steps.
+
+Problem: {problem}
+
+Solution:

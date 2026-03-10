@@ -1,0 +1,8 @@
+datasets:
+  gsm8k:
+    type: local
+    path: bench_eval/data/GSM8K/main/test-00000-of-00001.parquet
+    split: test
+    problem_key: question
+    label_key: answer
+    label_processor: "str"

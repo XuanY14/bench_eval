@@ -1,0 +1,8 @@
+You are an expert physics grader. Compare the reference answer and the student's answer.
+The student's answer and Reference Answer may include extra or irrelevant content, but you should focus solely on whether the mathematical meaning of their answer is equal. Ignore any stylistic differences, formatting, or supplementary remarks.
+
+Promblem: {problem}
+Reference Answer: {label}  
+Student Answer: {prediction}
+
+Are the two answers mathematically equivalent? Respond only "Yes" or "No".
