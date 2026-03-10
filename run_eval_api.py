@@ -138,7 +138,7 @@ def main():
     parser.add_argument("--judge_template_path", type=str, default="templates/judge_template.txt", help="Path to the judge prompt template")
     # API settings
     parser.add_argument("--api_key", type=str, required=True, help="API Key for GPT-5-Mini API")
-    parser.add_argument("--api_base_url", type=str, default="http://172.96.160.199:3000/v1", help="Base URL for GPT-5-Mini API")
+    parser.add_argument("--api_base_url", type=str, default="", help="Base URL for GPT-5-Mini API")
     parser.add_argument("--concurrent_threads", type=int, default=100, help="Number of concurrent threads for API calls")
     parser.add_argument("--request_delay", type=float, default=0.05, help="Delay between API requests (seconds)")
     args = parser.parse_args()
